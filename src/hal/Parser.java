@@ -49,25 +49,53 @@ public class Parser {
     }
 
     public void interpreter() {
+        Scanner eingabewert = new Scanner(System.in);
+        boolean debugmode = false;
+        System.out.println("Debugmode? [y/n]");
+        if("y".equals(eingabewert.next()))debugmode = true;
+        int[] regs;
+        regs = new int[256];
+        int acc = 0;
+        
         for (int i = 0; i < elem.size(); ++i) {
+            if(debugmode == true)System.out.println("Instruction: " + elem.get(i).getInstruktion() + " RegValue of Reg "+ elem.get(i).getVar() + " = " +  regs[elem.get(i).getVar()] + " AccValue: " + acc);
             switch (elem.get(i).getInstruktion()) {
                 case "START":
+                    System.out.println("Programmstart...");
                     break;
                 case "IN":
+                    acc = eingabewert.nextInt();
                     break;
                 case "STORE":
+                    regs[elem.get(i).getVar()] = acc;
                     break;
                 case "LOAD":
+                    acc = regs[elem.get(i).getVar()];
                     break;
                 case "SUB":
+                    acc = acc - regs[elem.get(i).getVar()];
                     break;
                 case "JUMP":
+                    i = (elem.get(i).getVar() - 1);
                     break;
                 case "JUMPNEG":
+                    if (acc < 0) {
+                        i = (elem.get(i).getVar() - 1);
+                    }
                     break;
                 case "JUMPPOS":
+                    if (acc >= 0) {
+                        i = (elem.get(i).getVar() - 1);
+                    }
+                    break;
+                case "OUT":
+                    System.out.println(acc);
+                    break;
+                case "STOP":
+                    System.out.println("...Programmende");
                     break;
             }
+            if(debugmode == true)System.out.println("RegValue of Reg " + elem.get(i).getVar() + " = " +  regs[elem.get(i).getVar()] + " AccValue: " + acc);
         }
     }
 }
