@@ -44,7 +44,7 @@ public class Parser {
             System.out.println(elem.get(i).toString());
         }        
     }
-    //kajfölkdsajfasf
+    
 
     public void schliessen() {
         s.close();
