@@ -12,6 +12,12 @@ import java.util.Scanner;
  */
 public class Parser {
     private ArrayList<Programm>elem;
+
+    Parser() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
     
 
     Scanner s;
@@ -33,9 +39,7 @@ public class Parser {
             elem.add(prg);
         }
         
-//        for(int i=0; i < elem.size(); ++i){
-//            System.out.println(elem.get(i).toString());
-//        }
+
         
     }
     

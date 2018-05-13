@@ -16,11 +16,7 @@ public class Programm {
     private int zeile;
     private String instruktion;
     private int var;
-    private ArrayList<Programm> Halprg;
-    
-    public ArrayList<Programm> getHalprg(){
-        return Halprg;
-    }
+ 
 
     public String getInstruktion() {
         return instruktion;
