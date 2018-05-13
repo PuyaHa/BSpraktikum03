@@ -19,7 +19,6 @@ public class HAL {
 //        prg.show();
 //        System.out.println(prg.toString());
         p.schliessen();
-
      
     }
     
