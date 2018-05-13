@@ -52,13 +52,17 @@ public class Parser {
         Scanner eingabewert = new Scanner(System.in);
         boolean debugmode = false;
         System.out.println("Debugmode? [y/n]");
-        if("y".equals(eingabewert.next()))debugmode = true;
+        if ("y".equals(eingabewert.next())) {
+            debugmode = true;
+        }
         int[] regs;
         regs = new int[256];
         int acc = 0;
-        
+
         for (int i = 0; i < elem.size(); ++i) {
-            if(debugmode == true)System.out.println("Instruction: " + elem.get(i).getInstruktion() + " RegValue of Reg "+ elem.get(i).getVar() + " = " +  regs[elem.get(i).getVar()] + " AccValue: " + acc);
+            if (debugmode == true) {
+                System.out.println("Instruction: " + elem.get(i).getInstruktion() + " RegValue of Reg " + elem.get(i).getVar() + " = " + regs[elem.get(i).getVar()] + " AccValue: " + acc);
+            }
             switch (elem.get(i).getInstruktion()) {
                 case "START":
                     System.out.println("Programmstart...");
@@ -72,8 +76,32 @@ public class Parser {
                 case "LOAD":
                     acc = regs[elem.get(i).getVar()];
                     break;
+                case "LOADNUM":
+                    acc = elem.get(i).getVar();
+                    break;
                 case "SUB":
                     acc = acc - regs[elem.get(i).getVar()];
+                    break;
+                case "SUBNUM":
+                    acc = acc - elem.get(i).getVar();
+                    break;
+                case "ADD":
+                    acc = acc + regs[elem.get(i).getVar()];
+                    break;
+                case "ADDNUM":
+                    acc = acc + elem.get(i).getVar();
+                    break;
+                case "MUL":
+                    acc = acc * regs[elem.get(i).getVar()];
+                    break;
+                case "MULNUM":
+                    acc = acc * elem.get(i).getVar();
+                    break;
+                case "DIV":
+                    acc = acc / regs[elem.get(i).getVar()];
+                    break;
+                case "DIVNUM":
+                    acc = acc / elem.get(i).getVar();
                     break;
                 case "JUMP":
                     i = (elem.get(i).getVar() - 1);
@@ -84,7 +112,12 @@ public class Parser {
                     }
                     break;
                 case "JUMPPOS":
-                    if (acc >= 0) {
+                    if (acc > 0) {
+                        i = (elem.get(i).getVar() - 1);
+                    }
+                    break;
+                case "JUMPNULL":
+                    if (acc == 0) {
                         i = (elem.get(i).getVar() - 1);
                     }
                     break;
@@ -95,7 +128,9 @@ public class Parser {
                     System.out.println("...Programmende");
                     break;
             }
-            if(debugmode == true)System.out.println("RegValue of Reg " + elem.get(i).getVar() + " = " +  regs[elem.get(i).getVar()] + " AccValue: " + acc);
+            if (debugmode == true) {
+                System.out.println("RegValue of Reg " + elem.get(i).getVar() + " = " + regs[elem.get(i).getVar()] + " AccValue: " + acc);
+            }
         }
     }
 }
