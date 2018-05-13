@@ -19,10 +19,7 @@ public class HAL {
 //        prg.show();
 //        System.out.println(prg.toString());
         p.schliessen();
-        //dsafjdslkafjdslaf
-        //lkdjsaöflkjdsaölfkadjf
-        //abctest
-        //COMMIT ALTER
+
      
     }
     
