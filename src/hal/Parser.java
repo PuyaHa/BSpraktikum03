@@ -48,7 +48,7 @@ public class Parser {
         s.close();
     }
 
-    public void interpreter() {
+    public void interpreter(boolean debugmode) {
         final long timeStart = System.currentTimeMillis(); 
         
         Scanner eingabewert = new Scanner(System.in);
@@ -62,9 +62,9 @@ public class Parser {
         int acc = 0;
 
         for (int i = 0; i < elem.size(); ++i) {
-//            if (debugmode == true) {
-//                System.out.println("Instruction: " + elem.get(i).getInstruktion() + " RegValue of Reg " + elem.get(i).getVar() + " = " + regs[elem.get(i).getVar()] + " AccValue: " + acc);
-//            }
+            if (debugmode == true) {
+                System.out.println("Instruction: " + elem.get(i).getInstruktion() + " RegValue of Reg " + elem.get(i).getVar() + " = " + regs[elem.get(i).getVar()] + " AccValue: " + acc);
+            }
             switch (elem.get(i).getInstruktion()) {
                 case "START":
                     System.out.println("Programmstart...");
