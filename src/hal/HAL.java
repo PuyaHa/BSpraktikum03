@@ -12,21 +12,26 @@ public class HAL {
 
     public static void main(String[] args) throws FileNotFoundException {
         boolean debugmode = false;
+        File f = new File("/home/debian/Dokumente/Betriebssystem/HAL_interpreter/BSpraktikum03/src/hal/HALprogramm.txt");
 
         if (args[0].equals("debug")) {
             debugmode = true;
-        } //            System.out.println("Der erste Parameter ist: " + args[0]);
-        else if (args[0].equals("1")) {
-            System.out.println("Hallo Welt!");
-        } //            System.out.println("Der Parameter ist nicht erlaubt!");
+            Parser p;
+            p = new Parser(f);
 
-        File f = new File("/home/debian/NetBeansProjects/BSpraktikum03/src/hal/HALprogramm.txt");
-        Parser p;
-        p = new Parser(f);
+            p.lesen();
+            p.show();
+            p.schliessen();
+            p.interpreter(debugmode);
+        } else if (args[0].equals(f)) {
 
-        p.lesen();
-        p.show();
-        p.schliessen();
-        p.interpreter(debugmode);
+            Parser p;
+            p = new Parser(f);
+
+            p.lesen();
+            p.show();
+            p.schliessen();
+            p.interpreter(debugmode);
+        }
     }
 }
