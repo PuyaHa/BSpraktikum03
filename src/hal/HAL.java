@@ -13,18 +13,17 @@ public class HAL {
     public static void main(String[] args) throws FileNotFoundException {
         boolean debugmode = false;
         File f = new File("empty");
-        
-        if (args[0].equals("-debug")) {
-            debugmode = true;
-        } else {
+        if (args.length == 1) {
             f = new File("/home/debian/NetBeansProjects/BSpraktikum03/src/HALcodes/" + args[0]);
+        } else {
+            if (args[0].equals("-debug")) {
+                debugmode = true;
+                f = new File("/home/debian/NetBeansProjects/BSpraktikum03/src/HALcodes/" + args[1]);
+            } else if (args[1].equals("-debug")) {
+                debugmode = true;
+                f = new File("/home/debian/NetBeansProjects/BSpraktikum03/src/HALcodes/" + args[0]);
+            }
         }
-        if (args[1].equals("-debug")) {
-            debugmode = true;
-        } else if(args[1].equals(null)){}else{
-            f = new File("/home/debian/NetBeansProjects/BSpraktikum03/src/HALcodes/" + args[1]);
-        }
-        
         Parser p;
         p = new Parser(f);
         p.lesen();
