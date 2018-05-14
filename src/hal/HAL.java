@@ -13,6 +13,7 @@ public class HAL {
     public static void main(String[] args) throws FileNotFoundException {
         boolean debugmode = false;
         File f = new File("empty");
+        if (args.length < 1){System.err.println("KEIN ARGUMENT!"); return;}
         if (args.length == 1) {
             f = new File("/home/debian/NetBeansProjects/BSpraktikum03/src/HALcodes/" + args[0]);
         } else {
@@ -30,6 +31,5 @@ public class HAL {
 //        p.show();
         p.schliessen();
         p.interpreter(debugmode);
-
     }
 }
