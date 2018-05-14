@@ -21,14 +21,14 @@ public class HAL {
         }
         if (args[1].equals("-debug")) {
             debugmode = true;
-        } else {
+        } else if(args[1].equals(null)){}else{
             f = new File("/home/debian/NetBeansProjects/BSpraktikum03/src/HALcodes/" + args[1]);
         }
         
         Parser p;
         p = new Parser(f);
         p.lesen();
-        p.show();
+//        p.show();
         p.schliessen();
         p.interpreter(debugmode);
 
